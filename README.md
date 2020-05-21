@@ -28,5 +28,5 @@ schemas # where the schemas are stored
 ├── schemaName # the name of the schema
 │   ├── version.json # the schema file itself, where the name is the version
 │   └── README.md # simple README to document version changelogs and what the schema is for
-└── server # schema server files
+server # schema server files
 ```
