@@ -76,8 +76,12 @@
         },
 
         "url": {
-            "type": "string",
-            "description": "The service's website URL. Protocols should not be added."
+            "type": ["string", "array"],
+            "description": "The service's website URL, or an array of URLs. Protocols should not be added.",
+            "items": {
+                "type": "string",
+                "description": "One of the service's website URLs."
+            }
         },
 
         "version": {
@@ -105,11 +109,12 @@
         },
 
         "tags": {
-            "type": ["string", "array"],
+            "type": ["array"],
             "description": "The tags for the presence.",
 
             "items": {
-                "type": "string"
+                "type": "string",
+                "description": "A tag."
             }
         },
 
