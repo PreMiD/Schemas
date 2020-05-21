@@ -88,7 +88,7 @@
             "type": "string",
             "description": "The SemVer version of the presence. Must just be major.minor.patch.",
 
-            "pattern": "^\\d\\.\\d\\.\\d$"
+            "pattern": "^\\d+\\.\\d+\\.\\d+$"
         },
 
         "logo": {
