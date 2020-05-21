@@ -133,7 +133,7 @@
             "description": "A regular expression used to match URLs for the presence to inject into."
         },
 
-        "iframeRegExp": {
+        "iFrameRegExp": {
             "type": "string",
             "description": "A regular expression used to match IFrames for the presence to inject into."
         },
