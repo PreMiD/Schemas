@@ -78,10 +78,12 @@
         "url": {
             "type": ["string", "array"],
             "description": "The service's website URL, or an array of URLs. Protocols should not be added.",
+            
             "items": {
                 "type": "string",
                 "description": "One of the service's website URLs."
-            }
+            },
+            "minItems": 2
         },
 
         "version": {
