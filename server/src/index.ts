@@ -32,9 +32,9 @@ app.get('/:schemaName/:version', async (req, res) => {
     if (!cachedSchema) {
         try {
             const result = await Axios.get(`https://api.github.com/repos/premid/schemas/contents/schemas/${req.params.schemaName}/${req.params.version}.json`);
-            const decoded = JSON.stringify(JSON.parse(Buffer.from(result.data.content, 'base64').toString('utf-8')));
-            schemaCache.set(cacheKey, decoded);
-            res.type('application/schema+json').send(decoded); // gh encodes in base64
+            const decoded = JSON.stringify(JSON.parse(Buffer.from(result.data.content, 'base64').toString('utf-8'))); // decode from base64 to utf-8, parse and stringify to minify JSON
+            schemaCache.set(cacheKey, decoded); // cache immediately so other people's requests are faster
+            res.type('application/schema+json').send(decoded);
         } catch (e) {
             if (e.message === 'Request failed with status code 404') {
                 res.status(404).send({ error: 'Schema not found.' });
