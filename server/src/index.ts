@@ -1,4 +1,3 @@
-require('dotenv').config();
 import Axios from 'axios';
 
 import Cache from 'node-cache';
