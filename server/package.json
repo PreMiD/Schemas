@@ -1,0 +1,22 @@
+{
+    "name": "schema-server",
+    "private": true,
+    "scripts": {
+        "dev": "devScript",
+        "start": "tsc && node -r dotenv/config dist/index.js"
+    },
+    "dependencies": {
+        "axios": "^0.19.2",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "helmet": "^3.22.0",
+        "node-cache": "^5.1.0"
+    },
+    "devDependencies": {
+        "@timeraa/devscript": "Timeraa/DevScript",
+        "@types/express": "^4.17.6",
+        "@types/helmet": "^0.0.47",
+        "@types/node": "^14.0.4",
+        "typescript": "^3.9.3"
+    }
+}
