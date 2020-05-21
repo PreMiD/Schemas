@@ -17,14 +17,16 @@ Schemas are versioned using `MAJOR.MINOR`. Patches are applied directly to the a
 Minor is bumped when a new property is added and it can be extended from a previous version of the schema.
 Major is bumped when properties are removed or the new iteration of the schema cannot be extended from the previous version.
 
-## ~~schemas.premid.app~~
-~~All schemas are hosted under schemas.premid.app. To use a schema, use `https://schemas.premid.app/:schemaName/:version` as the URL.
-`:schemaName` is the name of the thing you need the schema for (e.g. `metadata`) and `:version` is the version of the schema (e.g. `1.0`).~~ Coming soon.
+## schemas.premid.app
+All schemas are hosted under schemas.premid.app. To use a schema, use `https://schemas.premid.app/:schemaName/:version` as the URL.
+`:schemaName` is the name of the thing you need the schema for (e.g. `metadata`) and `:version` is the version of the schema (e.g. `1.0`).
 
 ## Folder structure
 
 ```bash
-schemaName
-├── README.md
-└── version.json
+schemas # where the schemas are stored
+├── schemaName # the name of the schema
+│   ├── version.json # the schema file itself, where the name is the version
+│   └── README.md # simple README to document version changelogs and what the schema is for
+└── server # schema server files
 ```
