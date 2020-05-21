@@ -105,7 +105,7 @@
             "type": "string",
             "description": "The theme color of the service this presence is for. Must be a 6 digit hex code.",
 
-            "pattern": "^#[A-Fa-f0-9]{6}$"
+            "pattern": "^#([A-Fa-f0-9]{3}){1,2}$"
         },
 
         "tags": {
