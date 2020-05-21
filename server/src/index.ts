@@ -38,4 +38,4 @@ app.get('/:schemaName/:version', async (req, res) => {
     }
 });
 
-app.listen(process.env.PORT);
+app.listen(process.env.PORT, () => console.log(`Server started on port ${process.env.PORT}`));
