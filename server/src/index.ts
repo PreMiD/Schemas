@@ -1,3 +1,7 @@
+import 'dotenv/config';
+process.env.LOG = process.env.LOG || 'true';
+process.env.PORT = process.env.PORT || '8080';
+
 import Axios from 'axios';
 
 import Cache from 'node-cache';
@@ -14,6 +18,8 @@ app.use(Helmet());
 if (process.env.LOG === 'true')
     app.use(Morgan('tiny'));
 
+app.get('/', (_, res) => res.send({ date: new Date() }));
+
 app.get('/:schemaName/:version', async (req, res) => {
     const cacheKey = `${req.params.schemaName}-${req.params.version}`;
 
@@ -25,12 +31,15 @@ app.get('/:schemaName/:version', async (req, res) => {
     const cachedSchema = schemaCache.get(cacheKey);
     if (!cachedSchema) {
         try {
-            const result = await Axios.get(`https://cdn.jsdelivr.net/gh/premid/schemas/schemas/${req.params.schemaName}/${req.params.version}.json`);
-            res.type('application/schema+json').send(result.data);
-            schemaCache.set(cacheKey, result.data);
+            const result = await Axios.get(`https://api.github.com/repos/premid/schemas/contents/schemas/${req.params.schemaName}/${req.params.version}.json`);
+            const decoded = JSON.stringify(JSON.parse(Buffer.from(result.data.content, 'base64').toString('utf-8')));
+            schemaCache.set(cacheKey, decoded);
+            res.type('application/schema+json').send(decoded); // gh encodes in base64
         } catch (e) {
             if (e.message === 'Request failed with status code 404') {
                 res.status(404).send({ error: 'Schema not found.' });
+            } else {
+                res.status(500).send({ error: e.message });
             }
         }
     } else {
