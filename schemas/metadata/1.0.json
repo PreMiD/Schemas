@@ -19,7 +19,8 @@
 
                 "id": {
                     "type": "string",
-                    "description": "The Discord snowflake of the user."
+                    "description": "The Discord snowflake of the user.",
+                    "pattern": "^\\d+$"
                 }
             },
 
@@ -81,7 +82,8 @@
             
             "items": {
                 "type": "string",
-                "description": "One of the service's website URLs."
+                "description": "One of the service's website URLs.",
+                "pattern": "^([a-z0-9-]+\\.)*[0-9a-z_-]+(\\.[a-z]+)+$"
             },
             "minItems": 2
         },
@@ -89,24 +91,24 @@
         "version": {
             "type": "string",
             "description": "The SemVer version of the presence. Must just be major.minor.patch.",
-
             "pattern": "^\\d+\\.\\d+\\.\\d+$"
         },
 
         "logo": {
             "type": "string",
-            "description": "The logo of the service this presence is for."
+            "description": "The logo of the service this presence is for.",
+            "pattern": "^https?:\\/\\/?(?:[a-z0-9-]+\\.)*[0-9a-z_-]+(?:\\.[a-z]+)+\\/.*$"
         },
 
         "thumbnail": {
             "type": "string",
-            "description": "A thumbnail of the service this presence is for."
+            "description": "A thumbnail of the service this presence is for.",
+            "pattern": "^https?:\\/\\/?([a-z0-9-]+\\.)*[0-9a-z_-]+(\\.[a-z]+)+\\/.*$"
         },
 
         "color": {
             "type": "string",
             "description": "The theme color of the service this presence is for. Must be a 6 digit hex code.",
-
             "pattern": "^#([A-Fa-f0-9]{3}){1,2}$"
         },
 
@@ -116,7 +118,8 @@
 
             "items": {
                 "type": "string",
-                "description": "A tag."
+                "description": "A tag.",
+                "pattern": "^[^A-Z\\s!\"#$%&'()*+,./:;<=>?@\\[\\\\\\]^_`{|}~]+$"
             }
         },
 
@@ -170,7 +173,8 @@
 
                     "icon": {
                         "type": "string",
-                        "description": "The icon of the setting. Required only if `multiLanguage` is disabled."
+                        "description": "The icon of the setting. Required only if `multiLanguage` is disabled.",
+                        "pattern": "^fa[bs] fa-[0-9a-z-]+$"
                     },
 
                     "if": {
