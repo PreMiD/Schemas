@@ -125,7 +125,8 @@
 
         "category": {
             "type": "string",
-            "description": "The category the presence falls under."
+            "description": "The category the presence falls under.",
+            "enum": ["anime", "games", "music", "socials", "videos", "other"]
         },
 
         "iframe": {
