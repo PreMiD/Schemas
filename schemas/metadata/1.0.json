@@ -62,8 +62,9 @@
 
             "propertyNames": {
                 "type": "string",
-                "description": "The language key. The key must be countrycode(_LANGUAGECODE).",
-                "pattern": "^[a-z]{2}(_[A-Z]{2})?$"
+                "description": "The language key. The key must be languagecode(_REGIONCODE).",
+                "pattern": "^[a-z]{2}(_[A-Z]{2})?$",
+                "enum": ["ar_SA","cs_CZ","da_DK","de","en","es","he_IL","nl","ja_JP","pt_BR","sv_SE","ro","tr","it","pl","sk","zh_CN","fr","hu","no","ru","uk_UA","fi","ko_KR","pt","th","bs_BA","id","sl_SI","az","vi_VN","et_EE","bn_BD","lt","uz","zh_TW","ga_IE","bg","fa_IR","is"]
             },
             "patternProperties": {
                 "^[a-z]{2}(_[A-Z]{2})?$": {
