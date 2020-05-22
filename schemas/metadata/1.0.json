@@ -32,7 +32,7 @@
     "properties": {
         "$schema": {
             "$comment": "This is required otherwise the schema will fail itself when it is applied to a document via $schema. This is optional so that validators that use this schema don't fail if the metadata doesn't have the $schema property.",
-
+            
             "type": "string",
             "description": "The metadata schema URL."
         },
@@ -58,7 +58,7 @@
 
         "description": {
             "type": "object",
-            "description": "A description of the presence for multiple languages.",
+            "description": "A description of the presence in multiple languages.",
 
             "propertyNames": {
                 "type": "string",
@@ -108,7 +108,7 @@
 
         "color": {
             "type": "string",
-            "description": "The theme color of the service this presence is for. Must be a 6 digit hex code.",
+            "description": "The theme color of the service this presence is for. Must be either a 6 digit or a 3 digit hex code.",
             "pattern": "^#([A-Fa-f0-9]{3}){1,2}$"
         },
 
@@ -157,6 +157,7 @@
         "settings": {
             "type": "array",
             "description": "An array of settings the user can change in the presence.",
+
             "items": {
                 "type": "object",
                 "description": "A setting.",
@@ -223,7 +224,7 @@
 
                         "items": {
                             "type": "string",
-                            "description": "The name of a file from the localization GitHub repo."
+                            "description": "The name of a file from the localization GitHub repository."
                         }
                     }
                 },
