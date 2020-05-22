@@ -62,7 +62,7 @@
 
             "propertyNames": {
                 "type": "string",
-                "description": "The language key. The key must be countrycode(_LANGUAGECODE).",
+                "description": "The language key. The key must be languagecode(_REGIONCODE).",
                 "pattern": "^[a-z]{2}(_[A-Z]{2})?$"
             },
             "patternProperties": {
