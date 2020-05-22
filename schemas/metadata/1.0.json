@@ -19,7 +19,8 @@
 
                 "id": {
                     "type": "string",
-                    "description": "The Discord snowflake of the user."
+                    "description": "The Discord snowflake of the user.",
+                    "pattern": "^\\d+$"
                 }
             },
 
@@ -31,7 +32,7 @@
     "properties": {
         "$schema": {
             "$comment": "This is required otherwise the schema will fail itself when it is applied to a document via $schema. This is optional so that validators that use this schema don't fail if the metadata doesn't have the $schema property.",
-
+            
             "type": "string",
             "description": "The metadata schema URL."
         },
@@ -57,7 +58,7 @@
 
         "description": {
             "type": "object",
-            "description": "A description of the presence for multiple languages.",
+            "description": "A description of the presence in multiple languages.",
 
             "propertyNames": {
                 "type": "string",
@@ -81,7 +82,8 @@
             
             "items": {
                 "type": "string",
-                "description": "One of the service's website URLs."
+                "description": "One of the service's website URLs.",
+                "pattern": "^(([a-z0-9-]+\\.)*[0-9a-z_-]+(\\.[a-z]+)+|(\\d{1,3}\\.){3}\\d{1,3}|localhost)$"
             },
             "minItems": 2
         },
@@ -89,24 +91,24 @@
         "version": {
             "type": "string",
             "description": "The SemVer version of the presence. Must just be major.minor.patch.",
-
             "pattern": "^\\d+\\.\\d+\\.\\d+$"
         },
 
         "logo": {
             "type": "string",
-            "description": "The logo of the service this presence is for."
+            "description": "The logo of the service this presence is for.",
+            "pattern": "^https?:\\/\\/?(?:[a-z0-9-]+\\.)*[0-9a-z_-]+(?:\\.[a-z]+)+\\/.*$"
         },
 
         "thumbnail": {
             "type": "string",
-            "description": "A thumbnail of the service this presence is for."
+            "description": "A thumbnail of the service this presence is for.",
+            "pattern": "^https?:\\/\\/?([a-z0-9-]+\\.)*[0-9a-z_-]+(\\.[a-z]+)+\\/.*$"
         },
 
         "color": {
             "type": "string",
-            "description": "The theme color of the service this presence is for. Must be a 6 digit hex code.",
-
+            "description": "The theme color of the service this presence is for. Must be either a 6 digit or a 3 digit hex code.",
             "pattern": "^#([A-Fa-f0-9]{3}){1,2}$"
         },
 
@@ -116,13 +118,15 @@
 
             "items": {
                 "type": "string",
-                "description": "A tag."
+                "description": "A tag.",
+                "pattern": "^[^A-Z\\s!\"#$%&'()*+,./:;<=>?@\\[\\\\\\]^_`{|}~]+$"
             }
         },
 
         "category": {
             "type": "string",
-            "description": "The category the presence falls under."
+            "description": "The category the presence falls under.",
+            "enum": ["anime", "games", "music", "socials", "videos", "other"]
         },
 
         "iframe": {
@@ -153,6 +157,7 @@
         "settings": {
             "type": "array",
             "description": "An array of settings the user can change in the presence.",
+
             "items": {
                 "type": "object",
                 "description": "A setting.",
@@ -170,7 +175,8 @@
 
                     "icon": {
                         "type": "string",
-                        "description": "The icon of the setting. Required only if `multiLanguage` is disabled."
+                        "description": "The icon of the setting. Required only if `multiLanguage` is disabled.",
+                        "pattern": "^fa[bs] fa-[0-9a-z-]+$"
                     },
 
                     "if": {
@@ -218,7 +224,7 @@
 
                         "items": {
                             "type": "string",
-                            "description": "The name of a file from the localization GitHub repo."
+                            "description": "The name of a file from the localization GitHub repository."
                         }
                     }
                 },
