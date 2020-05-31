@@ -121,7 +121,8 @@
                 "type": "string",
                 "description": "A tag.",
                 "pattern": "^[^A-Z\\s!\"#$%&'()*+,./:;<=>?@\\[\\\\\\]^_`{|}~]+$"
-            }
+            },
+            "minItems": 1
         },
 
         "category": {
