@@ -8,4 +8,4 @@ This schema is used to validate the `metadata.json` files in [PreMiD/Presences](
 - Adds "altnames" and "multiLanguage".
 
 ## 1.2
-- Adds "readLogs"
+- Adds "readLogs".
