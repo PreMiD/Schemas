@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema",
-	"$id": "https://schemas.premid.app/metadata/1.0",
+	"$id": "https://schemas.premid.app/metadata/1.3",
 
 	"title": "Metadata",
 	"type": "object",
