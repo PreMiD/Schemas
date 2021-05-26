@@ -8,7 +8,7 @@ This schema is used to validate the `metadata.json` files in [PreMiD/Presences](
 
 ## 1.3
 
-- Fixed validation for icons.
+- Fixes validation for icons.
 
 ## 1.2
 
