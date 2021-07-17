@@ -1,4 +1,4 @@
-import "dotenv/config";
+if (process.env.NODE_ENV !== "production") require("dotenv/config");
 
 import Axios from "axios";
 import Cache from "node-cache";
