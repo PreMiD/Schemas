@@ -14,9 +14,8 @@ ENV NODE_ENV=production
 ENV PORT=8080
 
 COPY --from=0 /dist/ .
-COPY --from=0 /node_modules /node_modules
 
-RUN npm prune --production
+RUN yarn
 
 EXPOSE 8080
 
