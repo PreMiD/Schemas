@@ -14,6 +14,8 @@ ENV NODE_ENV=production
 ENV PORT=8080
 
 COPY --from=0 /dist/ .
+COPY package.json .
+COPY yarn.lock .
 
 RUN yarn
 
