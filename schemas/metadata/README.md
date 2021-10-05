@@ -2,6 +2,10 @@
 
 This schema is used to validate the `metadata.json` files in [PreMiD/Presences](https://github.com/PreMiD/Presences).
 
+## 1.5
+
+- Allows `.gif` extensions for service logos and `.jpeg` extensions for service logos and thumbnails.
+
 ## 1.4
 
 - Adds regex for only allowing imgur links for `logo` & `thumbnail`.
