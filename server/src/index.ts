@@ -1,9 +1,9 @@
 if (process.env.NODE_ENV !== "production") require("dotenv/config");
 
 import Axios from "axios";
-import Cache from "node-cache";
 import Express from "express";
 import Helmet from "helmet";
+import Cache from "node-cache";
 
 process.env.LOG = process.env.LOG || "true";
 process.env.PORT = process.env.PORT || "8080";
@@ -32,7 +32,9 @@ app.get("/:schemaName/:version", async (req, res) => {
 				`https://api.github.com/repos/premid/schemas/contents/schemas/${req.params.schemaName}/${req.params.version}.json`
 			);
 			const decoded = JSON.stringify(
-				JSON.parse(Buffer.from(result.data.content, "base64").toString("utf-8"))
+				JSON.parse(
+					Buffer.from((result.data as any).content, "base64").toString("utf-8")
+				)
 			); // decode from base64 to utf-8, parse and stringify to minify JSON
 			schemaCache.set(cacheKey, decoded); // cache immediately so other people's requests are faster
 			res.type("application/schema+json").send(decoded);
