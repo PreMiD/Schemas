@@ -4,7 +4,7 @@ This schema is used to validate the `metadata.json` files in [PreMiD/Presences](
 
 ## 1.7
 
-- Change `icon` regex for compability with FontAwesome v6 icon labelling
+- Updates `icon` regex for compability with FontAwesome v6 icon labelling
 
 ## 1.6
 
