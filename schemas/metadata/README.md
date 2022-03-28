@@ -2,6 +2,10 @@
 
 This schema is used to validate the `metadata.json` files in [PreMiD/Presences](https://github.com/PreMiD/Presences).
 
+## 1.7
+
+- Updates `icon` regex for compability with FontAwesome v6 icon labelling
+
 ## 1.6
 
 - Adds support for language locales that end in numbers (e.g. es_419)
