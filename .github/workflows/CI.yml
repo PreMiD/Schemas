@@ -1,8 +1,8 @@
 name: CI
 on: [push, pull_request, workflow_call]
 jobs:
-  lint:
-    name: Lint
+  test:
+    name: Test & Lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -17,3 +17,5 @@ jobs:
         run: pnpm i --frozen-lockfile
       - name: Lint
         run: pnpm lint
+      - name: Test
+        run: pnpm test
