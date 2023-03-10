@@ -8,7 +8,7 @@ permissions:
   packages: write
 jobs:
   test:
-    uses: ./CI.yml
+    uses: ./CI.yml@main
   build-latest:
     needs: test
     if: ${{ github.event_name == 'push' }}
