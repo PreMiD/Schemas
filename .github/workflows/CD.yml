@@ -15,7 +15,7 @@ jobs:
     if: ${{ github.event_name == 'push' }}
     uses: "Recodive/Workflows/.github/workflows/CD Docker.yml@main"
     with:
-      context: master/.
+      context: .
       tags: premid/schemas
       version: latest
     secrets:
@@ -28,7 +28,7 @@ jobs:
     if: ${{ github.event_name == 'release' }}
     uses: "Recodive/Workflows/.github/workflows/CD Docker.yml@main"
     with:
-      context: master/.
+      context: .
       tags: premid/schemas
       version: ${{ github.event.release.tag_name }}
     secrets:
