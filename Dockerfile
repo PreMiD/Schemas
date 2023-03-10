@@ -4,7 +4,7 @@ WORKDIR /app
 RUN corepack enable
 
 COPY pnpm-lock.yaml .
-RUN pnpm fetch
+RUN pnpm i --frozen-lockfile
 
 COPY . .
 
