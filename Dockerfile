@@ -3,11 +3,9 @@ WORKDIR /app
 
 RUN corepack enable
 
-COPY pnpm-lock.yaml .
-RUN pnpm i --frozen-lockfile
-
 COPY . .
 
+RUN pnpm i --frozen-lockfile
 RUN pnpm --filter server build
 RUN pnpm --filter server deploy pruned --prod
 
