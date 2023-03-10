@@ -1,24 +1,26 @@
 FROM node:current-alpine
-
-
-COPY server .
-
-RUN yarn
-RUN yarn build
-
-FROM node:current-alpine
-
 WORKDIR /app
 
+RUN corepack enable
+
+COPY pnpm-lock.yaml .
+RUN pnpm fetch
+
+COPY . .
+
+RUN pnpm --filter server build
+RUN pnpm --filter server deploy pruned --prod
+
+FROM node:current-alpine
+WORKDIR /app
+
+RUN corepack enable
+
 ENV NODE_ENV=production
-ENV PORT=8080
 
-COPY --from=0 /dist/ .
-COPY --from=0 package.json .
-COPY --from=0 yarn.lock .
+COPY --from=0 /app/pruned/dist .
+COPY --from=0 /app/pruned/node_modules node_modules
 
-RUN yarn
-
-EXPOSE 8080
+EXPOSE 80
 
 CMD [ "node", "index" ]

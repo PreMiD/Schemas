@@ -1,55 +1,80 @@
-if (process.env.NODE_ENV !== "production") require("dotenv/config");
+import fastify, { RequestGenericInterface } from "fastify";
 
-import Axios from "axios";
-import Express from "express";
-import Helmet from "helmet";
-import Cache from "node-cache";
+if (process.env.NODE_ENV !== "production") await import("dotenv/config");
 
-process.env.LOG = process.env.LOG || "true";
-process.env.PORT = process.env.PORT || "8080";
+import helmet from "@fastify/helmet";
+import got, { HTTPError } from "got";
+import KeyV from "keyv";
 
-const schemaCache = new Cache({ stdTTL: 86400 });
+export const schemaCache = new KeyV({
+		ttl: 86_400,
+	}),
+	app = fastify();
 
-const app = Express();
-app.use(Helmet());
+app.register(helmet);
 
-app.get("/", (_, res) => res.send({ date: new Date() }));
+app.get("/", (_, reply) => reply.send({ date: new Date() }));
 
-app.get("/:schemaName/:version", async (req, res) => {
-	const cacheKey = `${req.params.schemaName}-${req.params.version}`;
+interface versionRequest extends RequestGenericInterface {
+	Querystring: {
+		purge?: string;
+	};
+	Params: {
+		schemaName: string;
+		version: string;
+	};
+}
 
-	if (req.query.purge !== undefined) {
-		schemaCache.del(cacheKey);
-		return res.send({
-			message: "Cache cleared for this schema. Remove `?purge` and refresh."
+app.get<versionRequest>("/:schemaName/:version", async (request, reply) => {
+	const cacheKey = `${request.params.schemaName}-${request.params.version}`;
+
+	if (request.query.purge !== undefined) {
+		await schemaCache.delete(cacheKey);
+		return reply.send({
+			message: "Cache cleared for this schema. Remove `?purge` and refresh.",
 		});
 	}
 
-	const cachedSchema = schemaCache.get(cacheKey);
-	if (!cachedSchema) {
-		try {
-			const result = await Axios.get(
-				`https://api.github.com/repos/premid/schemas/contents/schemas/${req.params.schemaName}/${req.params.version}.json`
-			);
-			const decoded = JSON.stringify(
-				JSON.parse(
-					Buffer.from((result.data as any).content, "base64").toString("utf-8")
-				)
-			); // decode from base64 to utf-8, parse and stringify to minify JSON
-			schemaCache.set(cacheKey, decoded); // cache immediately so other people's requests are faster
-			res.type("application/schema+json").send(decoded);
-		} catch (e) {
-			if (e.message === "Request failed with status code 404") {
-				res.status(404).send({ error: "Schema not found." });
-			} else {
-				res.status(500).send({ error: e.message });
-			}
+	const cachedSchema = await schemaCache.get(cacheKey);
+	if (cachedSchema) {
+		reply.type("application/schema+json").send(cachedSchema);
+		return;
+	}
+
+	try {
+		const schema = await got
+			.get(
+				`https://raw.githubusercontent.com/PreMiD/Schemas/main/schemas/${request.params.schemaName}/${request.params.version}.json`
+			)
+			.json();
+
+		await schemaCache.set(cacheKey, schema);
+		reply.type("application/schema+json").send(schema);
+	} catch (error) {
+		/* c8 ignore next */
+		if (!(error instanceof HTTPError)) return;
+
+		switch (error.response.statusCode) {
+			case 404:
+				reply.status(404).send({ error: "Schema not found." });
+				break;
+			/* c8 ignore start */
+			default:
+				reply.status(500).send({ error: error.message });
+				break;
+			/* c8 ignore stop */
 		}
-	} else {
-		res.type("application/schema+json").send(cachedSchema);
 	}
 });
 
-app.listen(process.env.PORT, () =>
-	console.log(`Server started on port ${process.env.PORT}`)
-);
+/* c8 ignore start */
+if (process.env.NODE_ENV !== "test") {
+	const url = await app.listen({
+		host: "0.0.0.0",
+		port: Number.parseInt(process.env.PORT || "80"),
+	});
+
+	// eslint-disable-next-line no-console
+	console.log(`Listening on ${url}`);
+}
+/* c8 ignore stop */

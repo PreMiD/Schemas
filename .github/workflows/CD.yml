@@ -1,21 +1,37 @@
-name: CD
-
+name: CD Docker
 on:
+  release:
+    types: [published]
   workflow_run:
-    workflows: ["CD Docker"]
+    workflows: ["CI"]
     branches:
       - main
     types:
       - completed
+permissions:
+  packages: write
 jobs:
-  deploy:
-    name: CD
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to cluster
-        uses: steebchen/kubectl@v2.0.0
-        env:
-          BRANCH: main
-        with:
-          config: ${{ secrets.KUBE_CONFIG_DATA }}
-          command: rollout restart -n premid deployment/schemas
+  build-latest:
+    if: ${{ github.event_name == 'push' }}
+    uses: "Recodive/Workflows/.github/workflows/CD Docker.yml@main"
+    with:
+      context: master/.
+      tags: premid/schemas
+      version: latest
+    secrets:
+      GH_NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    permissions:
+      contents: read
+      packages: write
+  build-release:
+    if: ${{ github.event_name == 'release' }}
+    uses: "Recodive/Workflows/.github/workflows/CD Docker.yml@main"
+    with:
+      context: master/.
+      tags: premid/schemas
+      version: ${{ github.event.release.tag_name }}
+    secrets:
+      GH_NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    permissions:
+      contents: read
+      packages: write

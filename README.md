@@ -13,11 +13,13 @@ If you have found a problem with a schema, please feel free to open a <a href="h
 </div>
 
 ## Schema versioning
+
 Schemas are versioned using `MAJOR.MINOR`. Patches are applied directly to the applicable version of the schema.
 Minor is bumped when a new property is added and it can be extended from a previous version of the schema.
 Major is bumped when properties are removed or the new iteration of the schema cannot be extended from the previous version.
 
 ## schemas.premid.app
+
 All schemas are hosted under schemas.premid.app. To use a schema, use `https://schemas.premid.app/:schemaName/:version` as the URL.
 `:schemaName` is the name of the thing you need the schema for (e.g. `metadata`) and `:version` is the version of the schema (e.g. `1.0`).
 

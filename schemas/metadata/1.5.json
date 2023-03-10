@@ -109,13 +109,13 @@
 		"logo": {
 			"type": "string",
 			"description": "The logo of the service this presence is for.",
-			"pattern": "^https?:\/\/(i).(imgur).(com)\/(.*?).(png|jpe?g|gif)$"
+			"pattern": "^https?://(i).(imgur).(com)/(.*?).(png|jpe?g|gif)$"
 		},
 
 		"thumbnail": {
 			"type": "string",
 			"description": "A thumbnail of the service this presence is for.",
-			"pattern": "^https?:\/\/(i).(imgur).(com)\/(.*?).(png|jpe?g)$"
+			"pattern": "^https?://(i).(imgur).(com)/(.*?).(png|jpe?g)$"
 		},
 
 		"color": {
