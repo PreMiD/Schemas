@@ -3,7 +3,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "devScript",
-		"build": "tsc",
+		"build": "tsc && devScript --copyOnly",
 		"start": "node dist/index.js",
 		"test": "vitest --run --coverage"
 	},
