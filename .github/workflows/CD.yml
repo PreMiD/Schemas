@@ -1,17 +1,16 @@
 name: CD Docker
 on:
+  push:
+    branches: [main]
   release:
     types: [published]
-  workflow_run:
-    workflows: ["CI"]
-    branches:
-      - main
-    types:
-      - completed
 permissions:
   packages: write
 jobs:
+  test:
+    uses: ./CI.yml
   build-latest:
+    needs: test
     if: ${{ github.event_name == 'push' }}
     uses: "Recodive/Workflows/.github/workflows/CD Docker.yml@main"
     with:
@@ -24,6 +23,7 @@ jobs:
       contents: read
       packages: write
   build-release:
+    needs: test
     if: ${{ github.event_name == 'release' }}
     uses: "Recodive/Workflows/.github/workflows/CD Docker.yml@main"
     with:
