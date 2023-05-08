@@ -15,7 +15,7 @@
 		"keyv": "^4.5.2"
 	},
 	"devDependencies": {
-		"@types/node": "^18.15.0",
+		"@types/node": "^20.0.0",
 		"@vitest/coverage-c8": "^0.31.0",
 		"@vitest/ui": "^0.31.0",
 		"ts-devscript": "^3.0.7",
