@@ -109,13 +109,13 @@
 		"logo": {
 			"type": "string",
 			"description": "The logo of the service this presence is for.",
-			"pattern": "^https?://(cdn[.]rcd[.]gg|i[.]imgur[.]com)/(.*?)[.](png|jpe?g|gif)$"
+			"pattern": "^https?://(cdn[.]rcd[.]gg|i[.]imgur[.]com)/(.*?)[.](png|jpe?g|gif|webp)$"
 		},
 
 		"thumbnail": {
 			"type": "string",
 			"description": "A thumbnail of the service this presence is for.",
-			"pattern": "^https?://(cdn[.]rcd[.]gg|i[.]imgur[.]com)/(.*?)[.](png|jpe?g|gif)$"
+			"pattern": "^https?://(cdn[.]rcd[.]gg|i[.]imgur[.]com)/(.*?)[.](png|jpe?g|gif|webp)$"
 		},
 
 		"color": {
