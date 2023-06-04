@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema",
-	"$id": "https://schemas.premid.app/metadata/1.8",
+	"$id": "https://schemas.premid.app/metadata/1.9",
 
 	"title": "Metadata",
 	"type": "object",
@@ -109,13 +109,13 @@
 		"logo": {
 			"type": "string",
 			"description": "The logo of the service this presence is for.",
-			"pattern": "^https?:\/\/.+\.(png|jpe?g|gif|webp)$"
+			"pattern": "^https?://.+\\.(png|jpe?g|gif|webp)$"
 		},
 
 		"thumbnail": {
 			"type": "string",
 			"description": "A thumbnail of the service this presence is for.",
-			"pattern": "^https?:\/\/.+\.(png|jpe?g|gif|webp)$"
+			"pattern": "^https?://.+\\.(png|jpe?g|gif|webp)$"
 		},
 
 		"color": {
