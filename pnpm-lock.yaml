@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -27,8 +27,8 @@ importers:
   server:
     dependencies:
       '@fastify/helmet':
-        specifier: ^10.1.0
-        version: 10.1.0
+        specifier: ^11.0.0
+        version: 11.0.0
       dotenv:
         specifier: ^16.0.3
         version: 16.0.3
@@ -516,11 +516,11 @@ packages:
       fast-json-stringify: 5.6.2
     dev: false
 
-  /@fastify/helmet@10.1.0:
-    resolution: {integrity: sha512-v7QJPYf1uVcCwzyHzkDGcHTqDPscXj/61JKxOdvczyDPAKTxSeb9Sc2OBActXaj7zUELiAdgnkKkzNwmCNzBLQ==}
+  /@fastify/helmet@11.0.0:
+    resolution: {integrity: sha512-YSFhJFR4Pk2azmTkX54f0Z/O7h5j4ruCQUlagf/Rw1P45u5/2u+F+I83DRyIKryM6prXl++X2yY0Ib0RXAlZ7Q==}
     dependencies:
       fastify-plugin: 4.5.0
-      helmet: 6.0.1
+      helmet: 7.0.0
     dev: false
 
   /@humanwhocodes/config-array@0.11.8:
@@ -2339,9 +2339,9 @@ packages:
       function-bind: 1.1.1
     dev: true
 
-  /helmet@6.0.1:
-    resolution: {integrity: sha512-8wo+VdQhTMVBMCITYZaGTbE4lvlthelPYSvoyNvk4RECTmrVjMerp9RfUOQXZWLvCcAn1pKj7ZRxK4lI9Alrcw==}
-    engines: {node: '>=14.0.0'}
+  /helmet@7.0.0:
+    resolution: {integrity: sha512-MsIgYmdBh460ZZ8cJC81q4XJknjG567wzEmv46WOBblDb6TUd3z8/GhgmsM9pn8g2B80tAJ4m5/d3Bi1KrSUBQ==}
+    engines: {node: '>=16.0.0'}
     dev: false
 
   /hosted-git-info@2.8.9:
