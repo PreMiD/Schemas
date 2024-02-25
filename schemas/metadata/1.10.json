@@ -160,13 +160,21 @@
 		"matches": {
 			"type": "array",
 			"description": "A glob pattern required to match Google's match pattern (https://developer.chrome.com/docs/extensions/develop/concepts/match-patterns). This is required for Presences.",
-			"pattern": "^(https|http|*):\/\/.*\/.*"
+			"items": {
+				"type": "string",
+				"description": "A glob pattern.",
+				"pattern": "^(https|http|*):\/\/.*\/.*"
+			}
 		},
 
 		"iFrameMatches": {
 			"type": "array",
 			"description": "A glob pattern required to match Google's match pattern (https://developer.chrome.com/docs/extensions/develop/concepts/match-patterns). This is required for Presences.",
-			"pattern": "^(https|http|*):\/\/.*\/.*"
+			"items": {
+				"type": "string",
+				"description": "A glob pattern.",
+				"pattern": "^(https|http|*):\/\/.*\/.*"
+			}
 		},
 
 		"iFrameRegExp": {
