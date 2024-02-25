@@ -163,7 +163,7 @@
 			"items": {
 				"type": "string",
 				"description": "A glob pattern.",
-				"pattern": "^(https|http|*):\/\/.*\/.*"
+				"pattern": "^(https|http|[*])://.*/.*"
 			}
 		},
 
@@ -173,7 +173,7 @@
 			"items": {
 				"type": "string",
 				"description": "A glob pattern.",
-				"pattern": "^(https|http|*):\/\/.*\/.*"
+				"pattern": "^(https|http|[*])://.*/.*"
 			}
 		},
 
