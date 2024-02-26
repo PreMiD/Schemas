@@ -37,7 +37,7 @@ importers:
         version: 4.14.1
       got:
         specifier: ^14.0.0
-        version: 14.0.0
+        version: 14.2.0
       keyv:
         specifier: ^4.5.2
         version: 4.5.4
@@ -2422,8 +2422,8 @@ packages:
       slash: 3.0.0
     dev: true
 
-  /got@14.0.0:
-    resolution: {integrity: sha512-X01vTgaX9SwaMq5DfImvS+3GMQFFs5HtrrlS9CuzUSzkxAf/tWGEyynuI+Qy7BjciMczZGjyVSmawYbP4eYhYA==}
+  /got@14.2.0:
+    resolution: {integrity: sha512-dBq2KkHcQl3AwPoIWsLsQScCPpUgRulz1qZVthjPYKYOPmYfBnekR3vxecjZbm91Vc3JUGnV9mqFX7B+Fe2quw==}
     engines: {node: '>=20'}
     dependencies:
       '@sindresorhus/is': 6.1.0
