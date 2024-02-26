@@ -20,6 +20,6 @@
 		"@vitest/ui": "^1.0.0",
 		"ts-devscript": "^3.0.7",
 		"typescript": "^5.0.0",
-		"vitest": "^0.31.0"
+		"vitest": "^0.34.0"
 	}
 }
